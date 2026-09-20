@@ -89,3 +89,34 @@ an ablation that matches category granularity).
    to CF-equivalent when content doesn't help). **Null:** Feature-Off hybrids
    underperform both CF baselines, suggesting a fixed architectural cost
    independent of content that would complicate the isolation logic above.
+
+## Null Hypothesis (Core Cross-Dataset Comparison)
+
+**H0:** The content-feature lift observed for DeepFM and Wide & Deep is
+statistically indistinguishable — in both direction and magnitude — between
+MovieLens and KuaiRec.
+
+**What confirming H0 would mean:** If content features help (or don't help) to
+the same degree on both datasets, that would indicate the content-hybrid
+literature's findings generalize beyond MovieLens to a fully-observed,
+short-video setting with a structurally different feature vocabulary. This is
+the outcome that would most undercut this project's motivating premise — the
+hypothesis that KuaiRec's protocol (sparse-train/dense-eval, removing exposure
+bias) and its coarser 14-tag vocabulary would cause the known MovieLens content
+lift to attenuate, vanish, or reverse.
+
+**What rejecting H0 would mean:** A significant difference in the content
+effect's direction or size between datasets would support the project's core
+hypothesis — that content-feature benefit is not a fixed property of these
+architectures, but depends on the interaction between feature vocabulary
+richness and the exposure-bias regime of the evaluation protocol.
+
+**Important caveat carried over from the confounder discussion above:** even if
+H0 is rejected, the *size* of the difference should not be interpreted as a
+clean measure of "how much more useful genres are than category tags" — that
+comparison remains confounded by the two datasets' differing vocabulary
+cardinality (18 vs. 14), differing informativeness per feature, and differing
+CF-baseline headroom (LightGCN/SVD performance) under each dataset's protocol.
+Only the *direction* of the cross-dataset comparison (content helps more, less,
+or about the same) is treated as evidence-bearing here; magnitude is reported
+for completeness but flagged as not directly comparable.
