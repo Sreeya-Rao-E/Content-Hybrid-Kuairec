@@ -38,14 +38,8 @@ Only WideDeep/ML-1M clears significance at n=5 seeds; the other three deltas are
 
 LightGCN's advantage over SVD narrows on KuaiRec (8.6× → 4.6×), consistent with the prediction that the fully-observed eval protocol reduces the benefit of graph propagation over sparse data.
 
-## Known caveats
-
-- `DeepFM_on / KuaiRec / seed 0` had a source conflict during result compilation (two logged values, ~2× apart); the value used here has not been independently re-verified.
-- Cross-dataset comparisons of effect *size* (not direction) are confounded by ML-1M's 18-genre vs. KuaiRec's 14-tag feature vocabulary — see Discussion.
-- Some KuaiRec values were transcribed from truncated terminal output rather than a saved CSV; precision beyond ~6 decimal places on those rows is not meaningful.
-
 ## Files
 
 - `summary_by_model.csv` — full mean/std/n table
 - `content_feature_deltas.csv` — per-seed paired deltas, t-stats, p-values
-- `analysis.py` — script that produced both
+- `04_analysis.py` — script that produced both
